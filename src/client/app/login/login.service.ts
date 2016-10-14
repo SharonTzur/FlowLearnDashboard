@@ -20,7 +20,7 @@ export class LoginService {
   signInWithGoogle() {
     this.provider = new this.firebaseRef.auth.GoogleAuthProvider();
     return this.firebaseAuth.signInWithPopup(this.provider).then((result:any) => {
-      this.getUserById(result.user.uid);
+      this.getAdminById(result.user.uid);
     }).catch(function (error:any) {
       console.log(error)
     });
@@ -30,7 +30,7 @@ export class LoginService {
     return JSON.parse(localStorage.getItem('adminUser'));
   }
 
-  getUserById(reqUserId: any) {
+  getAdminById(reqUserId: any) {
     this.firebaseDb.child('users/'+reqUserId).on("value", (user)=>{
       localStorage.setItem('adminUser',JSON.stringify(user.val()))
       this.adminUser = user.val();
