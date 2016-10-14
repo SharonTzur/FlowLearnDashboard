@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
-
 import { LoginModule } from './login/login.module';
 import { SignupModule } from './signup/signup.module';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -19,7 +18,8 @@ import { SharedModule } from './shared/shared.module';
 		LoginModule,
 		SignupModule,
 		DashboardModule,
-		SharedModule.forRoot()
+		SharedModule.forRoot(),
+
 	],
 	declarations: [AppComponent],
 	providers: [{

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LoginService} from "../../login/login.service";
 
 @Component({
     moduleId: module.id,
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 
 export class TopNavComponent {
+
+  adminUser:any;
+
+  constructor (private auth : LoginService){
+    this.adminUser =  this.auth.getAdmin();
+  }
+
 	changeTheme(color: string): void {
 		var link: any = $('<link>');
 		link

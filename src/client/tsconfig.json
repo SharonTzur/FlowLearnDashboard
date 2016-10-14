@@ -25,7 +25,9 @@
       "jasmine",
       "node",
       "protractor",
-      "systemjs"
+      "systemjs",
+      "firebase",
+      "es6-promise"
     ]
   },
   "compileOnSave": false

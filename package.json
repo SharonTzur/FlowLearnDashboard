@@ -32,6 +32,7 @@
     "tests.all": "npm test && npm run e2e.ci",
     "webdriver-start": "webdriver-manager start",
     "webdriver-update": "webdriver-manager update"
+
   },
   "author": "Nitin Kumar Mishra",
   "license": "MIT",
@@ -41,6 +42,7 @@
     "@angular/tsc-wrapped": "0.3.0",
     "@types/async": "2.0.31",
     "@types/browser-sync": "0.0.32",
+    "@angular/http": "2.0.0-rc.1",
     "@types/connect-livereload": "0.5.29",
     "@types/core-js": "0.9.32",
     "@types/express": "4.0.32",
@@ -140,6 +142,7 @@
     "@angular/router": "3.0.0",
     "core-js": "2.4.0",
     "es-module-loader": "1.0.0",
+    "firebase": "^3.4.1",
     "font-awesome": "4.6.3",
     "highcharts": "4.2.5",
     "jquery": "3.0.0",

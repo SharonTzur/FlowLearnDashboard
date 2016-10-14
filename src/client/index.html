@@ -7,7 +7,19 @@
     <title><%= APP_TITLE %></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- inject:css -->
+  <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: 'AIzaSyATVo4-ToKFGqopE4MMQbqeWSO70Dn_9hE',
+      authDomain: 'learning-journal.firebaseapp.com',
+      databaseURL: 'https://learning-journal.firebaseio.com',
+      storageBucket: 'learning-journal.appspot.com'
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <!-- inject:css -->
     <!-- endinject -->
 </head>
 <body>
