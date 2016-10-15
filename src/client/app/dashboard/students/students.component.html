@@ -17,14 +17,38 @@
     </div>
     <!-- /.row -->
     <div class="row">
+        <div class="col-md-6">
+            <select #selectedCommunity (change)=" convertIdsArrayToCommunityStudents(selectedCommunity.value)" class="community-select">
+                <option [value]="null">Select a community</option>
+                <option *ngFor="let community of communitiesIds" [value]="community">{{studService.communities[community].name}}</option>
+            </select>
+        </div> <div class="col-md-6">
+        <button class="add-student btn btn-md btn-info" type="button" [disabled]="selectedCommunity.value=='null'" (click)="addStudentModal.show()">
+            Add a Student
+        </button>
+        <div bsModal #addStudentModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" (click)="addStudentModal.hide()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title">Add a student</h5>
+                    </div>
+                    <div class="modal-body">
+                        <strong>Enter the student's email address below:</strong>
+                        <div><input type="email" #newStudentEmail></div>
+                        <button class="add-student btn btn-md btn-info" type="button"(click)="addStudentToCommunity(selectedCommunity.value, newStudentEmail.value)">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
         <div class="col-xl-12 col-lg-12">
 
-          <h4> Your Study Community Students
-          </h4>
-         <select #selectedCommunity (change)="getStudentsByCommunityId(selectedCommunity.value)">
-           <option *ngFor="let community of communities" [value]="community.communityId">{{community.communityName}}</option>
-         </select>
-          <div class="card card-block">
+
+            <div class="card card-block">
             <table class="table table-hover">
               <thead>
               <tr>
@@ -35,7 +59,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let student of studService.communityStudents let i = index">
+              <tr *ngFor="let student of studService.communityStudents let i = index" (click)="goToStudentPage(student['key'])">
                 <th scope="row">{{i+1}}</th>
                 <td>{{student.displayName}}</td>
                 <td>{{student.email}}</td>

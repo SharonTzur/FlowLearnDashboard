@@ -5,6 +5,7 @@ import { ChartRoutes } from './charts/index';
 import { BlankPageRoutes } from './blank-page/index';
 import { TableRoutes } from './tables/index';
 import { StudentsRoutes } from './students/index';
+import { StudentRoutes } from './student/index';
 import { FormRoutes } from './forms/index';
 import { GridRoutes } from './grid/index';
 import { BSComponentRoutes } from './bs-component/index';
@@ -22,6 +23,7 @@ export const DashboardRoutes: Route[] = [
 	    	...BSComponentRoutes,
         ...TableRoutes,
         ...StudentsRoutes,
+        ...StudentRoutes,
 	    	...BlankPageRoutes,
         ...FormRoutes,
         ...GridRoutes,
