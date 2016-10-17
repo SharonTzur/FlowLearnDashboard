@@ -31,7 +31,7 @@ export class StudentsService {
         Object.keys(adminCommunities).forEach((key)=> {
             let wantedCommunityId = adminCommunities[key].communityId;
             this.communityUsersPath = this.firebaseDb.child('communities/' + wantedCommunityId);
-            this.getUsers(this.communityUsersPath).subscribe((communityObj)=> {
+            this.getRecords(this.communityUsersPath).subscribe((communityObj)=> {
                 this.communities[wantedCommunityId] = communityObj;
                 this.adminCommunities.next(Object.keys(this.communities));
             })
@@ -41,14 +41,14 @@ export class StudentsService {
     getStudentsByCommunityId(communityId) {
         this.communityStudents = [];
         this.communityUsersPath = this.firebaseDb.child('communities/' + communityId + '/users');
-        this.getUsers(this.communityUsersPath).subscribe((userIds)=> {
+        this.getRecords(this.communityUsersPath).subscribe((userIds)=> {
             let userIdsArr = Object.keys(userIds);
             if (!userIdsArr || !userIdsArr.length) {
                 return;
             }
             userIdsArr.forEach((userId)=> {
                 this.reqUserPath = this.firebaseDb.child('users/' + userIds[userId]);
-                this.getUsers(this.reqUserPath).subscribe((user)=> {
+                this.getRecords(this.reqUserPath).subscribe((user)=> {
                     this.communityStudents.push(user);
                 })
             })
@@ -58,12 +58,12 @@ export class StudentsService {
     convertIdsArrayToCommunityStudents(communityId) {
         this.communityStudents=[];
         this.communityUsersPath = this.firebaseDb.child('communities/' + communityId + '/users');
-        this.getUsers(this.communityUsersPath).subscribe((userIds)=> {
+        this.getRecords(this.communityUsersPath).subscribe((userIds)=> {
             this.communityStudents=[];
             Object.keys(this.communities[communityId].users).forEach((userIdKey)=> {
                 let userId = this.communities[communityId].users[userIdKey];
                 this.reqUserPath = this.firebaseDb.child('users/' + userId);
-                this.getUsers(this.reqUserPath).subscribe((user)=> {
+                this.getRecords(this.reqUserPath).subscribe((user)=> {
                     user["key"]=userId;
                     this.communityStudents.push(user);
                 })
@@ -84,7 +84,13 @@ export class StudentsService {
     }
 
 
-    getUsers(ref) {
+    getStudentById(studentId){
+        let studentPath = this.firebaseDb.child('users/'+studentId);
+        return this.getRecords(studentPath);
+    }
+
+
+    getRecords(ref) {
         return Observable.create(function (observer: any) {
             function value(snapshot) {
                 observer.next(snapshot.val());

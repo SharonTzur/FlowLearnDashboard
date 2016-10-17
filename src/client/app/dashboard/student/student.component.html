@@ -10,10 +10,10 @@
                     <i class="fa fa-dashboard"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
                 </li>
                 <li>
-                    <i class="fa fa-graduation-cap"></i> <a href="Javascript:void(0);" routerLink="/dashboard/home">Students</a>
+                    <i class="fa fa-graduation-cap"></i> <a href="Javascript:void(0);" routerLink="/dashboard/students">Students</a>
                 </li>
                 <li class="active">
-                    <i class=""></i> Name
+                    <i class=""></i> {{currentStudent.displayName}}
                 </li>
             </ol>
         </div>
@@ -25,7 +25,19 @@
 
 
             <div class="card card-block">
+                <tabset>
+                    <tab heading="Static title">Static content</tab>
+                    <tab *ngFor="let tabz of tabs"
+                         [heading]="tabz.title"
+                         [active]="tabz.active"
+                         (select)="tabz.active = true"
+                         (deselect)="tabz.active = false"
+                         [disabled]="tabz.disabled"
 
+                       >
+                        {{tabz?.content}}
+                    </tab>
+                </tabset>
           </div>
         </div>
     </div>
