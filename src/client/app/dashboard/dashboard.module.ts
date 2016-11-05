@@ -10,6 +10,7 @@ import { BlankPageModule } from './blank-page/blankPage.module';
 import { TableModule } from './tables/table.module';
 import { StudentsModule } from './students/students.module';
 import { StudentModule } from './student/student.module';
+import { FeedbackModule } from './feedback/feedback.module';
 import { FormModule } from './forms/forms.module';
 import { GridModule } from './grid/grid.module';
 import { BSComponentModule } from './bs-component/bsComponent.module';
@@ -32,6 +33,7 @@ import {SidebarComponent} from '../shared/index';
         TableModule,
       StudentsModule,
       StudentModule,
+        FeedbackModule,
         FormModule,
         GridModule,
     	BSComponentModule,

@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-xl-12">
+            <h2 class="page-header">
+             Feedback
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i>  <a href="Javascript:void(0);" routerLink="/dashboard/home">Dashboard</a>
+                </li>
+                <li>
+                    <i class="fa fa-graduation-cap"></i> <a href="Javascript:void(0);" routerLink="/dashboard/students">Students</a>
+                </li>
+                <li class="active">
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+
+        <div class="col-xl-12 col-lg-12">
+
+
+            <div *ngFor="let task of tasksKeys" class="card card-block">
+                {{tasksForFeedback[task].taskId}}
+
+          </div>
+        </div>
+    </div>
+</div>

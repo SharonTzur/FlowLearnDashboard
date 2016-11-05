@@ -32,8 +32,9 @@ export class LoginService {
 
   getAdminById(reqUserId: any) {
     this.firebaseDb.child('users/'+reqUserId).on("value", (user)=>{
-      localStorage.setItem('adminUser',JSON.stringify(user.val()))
       this.adminUser = user.val();
+      this.adminUser["userId"]=reqUserId;
+      localStorage.setItem('adminUser',JSON.stringify(this.adminUser));
       this.adminUserObs.next(user.val());
     });
   };
